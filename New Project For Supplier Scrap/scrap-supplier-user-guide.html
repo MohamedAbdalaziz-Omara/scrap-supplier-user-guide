@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrap Project – Supplier Portal User Guide</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            color: #ffffff;
+            padding: 32px 24px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: 600;
+        }
+        header p {
+            margin-top: 8px;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        nav {
+            background-color: #374151;
+            padding: 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        nav a {
+            color: #ffffff;
+            margin-right: 24px;
+            text-decoration: none;
+            font-size: 15px;
+            white-space: nowrap;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #4b5563;
+            text-decoration: none;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 32px 24px;
+        }
+        section {
+            background-color: #ffffff;
+            padding: 32px;
+            margin-bottom: 32px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+        h2 {
+            margin-top: 0;
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 12px;
+            color: #1f2937;
+            font-size: 28px;
+        }
+        h3 {
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: #374151;
+            font-size: 20px;
+        }
+        ul {
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+        li {
+            margin-bottom: 8px;
+            line-height: 1.8;
+        }
+        .video-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            padding: 24px;
+            margin-top: 24px;
+            font-size: 16px;
+            color: #1e40af;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .video-box::before {
+            content: '▶';
+            display: inline-block;
+            font-size: 24px;
+            margin-right: 12px;
+            vertical-align: middle;
+        }
+        .video-box video,
+        .video-box iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border-radius: 6px;
+            margin-top: 12px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .video-box iframe {
+            border: none;
+        }
+        .video-placeholder {
+            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+            border: 2px dashed #6366f1;
+            border-radius: 8px;
+            padding: 40px 20px;
+            margin-top: 12px;
+            color: #4f46e5;
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            .video-box video,
+            .video-box iframe {
+                height: 250px;
+            }
+        }
+        .highlight-box {
+            background-color: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .step-box {
+            background-color: #f0f9ff;
+            border-left: 4px solid #0ea5e9;
+            padding: 16px 20px;
+            margin: 16px 0;
+            border-radius: 4px;
+        }
+        .step-number {
+            display: inline-block;
+            background-color: #0ea5e9;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+        footer {
+            text-align: center;
+            padding: 24px;
+            font-size: 14px;
+            background-color: #1f2937;
+            color: #ffffff;
+            margin-top: 48px;
+        }
+        .activation-section {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border: 3px solid #3b82f6;
+            position: relative;
+        }
+        .activation-section::before {
+            content: '⚠️ IMPORTANT';
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background-color: #ef4444;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #3b82f6;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        @media (max-width: 768px) {
+            nav {
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            nav a {
+                display: inline-block;
+            }
+            section {
+                padding: 20px;
+            }
+            h2 {
+                font-size: 24px;
+            }
+            .container {
+                padding: 20px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Scrap Project – Supplier Portal</h1>
+    <p>User Guide & Training Reference for Suppliers</p>
+</header>
+
+<nav>
+    <a href="#activation">🔐 Account Activation</a>
+    <a href="#overview">Home</a>
+    <a href="#getting-started">Getting Started</a>
+    <a href="#security">Login & Security</a>
+    <a href="#navigation">Portal Navigation</a>
+    <a href="#profile">My Profile & Company</a>
+    <a href="#finance">Payments & Invoices</a>
+    <a href="#vehicles">Vehicles</a>
+    <a href="#employees">Employees</a>
+    <a href="#auctions">Offline Auctions</a>
+    <a href="#documents">Documents & Resources</a>
+</nav>
+
+<div class="container">
+
+<!-- ACTIVATION SECTION - NOW FIRST AND MOST PROMINENT -->
+<section id="activation" class="activation-section">
+    <h2>🔐 Account Activation Process <span class="badge">REQUIRED FIRST STEP</span></h2>
+    
+    <div class="highlight-box">
+        <strong>⚠️ Important:</strong> Account activation must be completed BEFORE your first login attempt. 
+        You cannot access the portal until your account is activated.
+    </div>
+
+    <h3>Step-by-Step Activation Process</h3>
+    
+    <div class="step-box">
+        <span class="step-number">1</span>
+        <strong>Account Creation by Administrator</strong>
+        <p style="margin: 8px 0 0 40px;">The system administrator creates your supplier account in the system.</p>
+    </div>
+
+    <div class="step-box">
+        <span class="step-number">2</span>
+        <strong>Receive Activation Information</strong>
+        <p style="margin: 8px 0 0 40px;">You will receive an email at your registered email address containing your account activation information. 
+        <strong>Check your inbox and spam folder.</strong></p>
+    </div>
+
+    <div class="step-box">
+        <span class="step-number">3</span>
+        <strong>Enter Activation Information</strong>
+        <p style="margin: 8px 0 0 40px;">Go to the activation page and enter the information you received in the email to start the activation process.</p>
+    </div>
+
+    <div class="step-box">
+        <span class="step-number">4</span>
+        <strong>Receive OTP via Email</strong>
+        <p style="margin: 8px 0 0 40px;">After entering the correct information, an OTP (One-Time Password) will be sent to your registered email address.</p>
+    </div>
+
+    <div class="step-box">
+        <span class="step-number">5</span>
+        <strong>Enter OTP and Set Password</strong>
+        <p style="margin: 8px 0 0 40px;">Enter the OTP you received in your email. If the OTP is correct, you will be prompted to set your password. 
+        Create a secure password following the system requirements.</p>
+    </div>
+
+    <div class="step-box">
+        <span class="step-number">6</span>
+        <strong>Account Activated</strong>
+        <p style="margin: 8px 0 0 40px;">Once your password is set, your account is activated and you can proceed to login.</p>
+    </div>
+
+    <div class="video-box">
+        📹 <strong>Account Activation Walkthrough Video</strong>
+        <p style="margin-top: 12px; font-size: 14px;">Watch this video to see the complete activation process step-by-step</p>
+        
+        <!-- 
+        YOUTUBE: Replace VIDEO_ID below with your YouTube video ID
+        Example: If your YouTube URL is youtube.com/watch?v=ABC123xyz, use ABC123xyz
+        
+        ONEDRIVE ALTERNATIVE: If using OneDrive, get the embed link from OneDrive share options
+        and replace the iframe src below with your OneDrive embed URL
+        -->
+        
+        <!-- OneDrive Video Embed -->
+        <!-- 
+        IMPORTANT: To get the correct embed code from OneDrive:
+        1. Go to your OneDrive and open the video
+        2. Click the "..." (three dots) menu → "Embed"
+        3. Copy the ENTIRE iframe code provided
+        4. Replace the iframe below with the one from OneDrive
+        
+        OR use the direct link button below if embedding doesn't work
+        -->
+        
+        <!-- Option 1: Try this embed format (replace with embed code from OneDrive) -->
+        <iframe 
+            width="100%" 
+            height="450" 
+            src="https://gizasystems-my.sharepoint.com/personal/mohamed_omara/_layouts/15/embed.aspx?UniqueId=IQC6CYG8i5cTRbpJi4OH5mFmAUj0xw2cXEP1Rb1fWuTQPEc&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&wdAr=true" 
+            frameborder="0" 
+            allowfullscreen
+            style="max-width: 800px; display: block; margin: 12px auto 0; border: 1px solid #ccc;">
+        </iframe>
+        
+        <!-- Option 2: If above doesn't work, use this direct link button -->
+        <div style="margin-top: 16px; text-align: center; padding: 20px; background-color: #f0f9ff; border-radius: 8px;">
+            <p style="margin: 0 0 12px 0; color: #1e40af; font-weight: 600;">📺 Video Player</p>
+            <a href="https://gizasystems-my.sharepoint.com/:v:/p/mohamed_omara/IQC6CYG8i5cTRbpJi4OH5mFmAUj0xw2cXEP1Rb1fWuTQPEc?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=mldGOJ" 
+               target="_blank" 
+               style="display: inline-block; padding: 12px 24px; background-color: #3b82f6; color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">
+                ▶️ Click to Watch Video on OneDrive
+            </a>
+            <p style="margin-top: 12px; margin-bottom: 0; font-size: 14px; color: #64748b;">
+                (Opens in a new window)
+            </p>
+        </div>
+        
+    </div>
+
+    <div class="highlight-box" style="margin-top: 24px;">
+        <strong>💡 Note:</strong> All OTP codes are sent to your registered email address. If you don't receive the email or OTP within a few minutes, please:
+        <ul style="margin-top: 8px;">
+            <li>Check your spam/junk folder</li>
+            <li>Verify the email address is correct</li>
+            <li>Contact the system administrator if the issue persists</li>
+        </ul>
+    </div>
+    
+</section>
+
+<section id="overview">
+    <h2>Home – System Overview</h2>
+    <p>
+        The Scrap Project Supplier Portal enables suppliers to manage their accounts,
+        view business and financial information, upload and access required documents,
+        and participate in offline auctions.
+    </p>
+    <div class="video-box">
+        📹 <strong>Overview Video of the Supplier Portal</strong>
+        <p style="margin-top: 12px; font-size: 14px;">Get familiar with the portal's main features and capabilities</p>
+        
+        <div style="margin-top: 16px; text-align: center; padding: 20px; background-color: #f0f9ff; border-radius: 8px;">
+            <p style="margin: 0 0 12px 0; color: #1e40af; font-weight: 600;">📺 Video Player</p>
+            <a href="https://gizasystems-my.sharepoint.com/:v:/p/mohamed_omara/IQC6CYG8i5cTRbpJi4OH5mFmAUj0xw2cXEP1Rb1fWuTQPEc?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=mldGOJ" 
+               target="_blank" 
+               style="display: inline-block; padding: 12px 24px; background-color: #3b82f6; color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">
+                ▶️ Click to Watch Video on OneDrive
+            </a>
+            <p style="margin-top: 12px; margin-bottom: 0; font-size: 14px; color: #64748b;">
+                (Opens in a new window)
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="getting-started">
+    <h2>Getting Started – Account Onboarding & Access</h2>
+
+    <h3>After Account Activation</h3>
+    <p>Once your account is activated (see <a href="#activation" style="color: #3b82f6;">Account Activation Process</a> above), 
+    you can proceed with your first login.</p>
+
+    <h3>First-Time Login</h3>
+    <ul>
+        <li>Navigate to the Supplier Portal login page.</li>
+        <li>Enter your registered username and the password you set during activation.</li>
+        <li>Click "Login" to access the portal.</li>
+        <li>Upon successful login, you will be redirected to the home screen.</li>
+    </ul>
+
+    <div class="video-box">
+        📹 <strong>First Login Walkthrough Video</strong>
+        <p style="margin-top: 12px; font-size: 14px;">Learn how to access the portal after account activation</p>
+        
+        <div style="margin-top: 16px; text-align: center; padding: 20px; background-color: #f0f9ff; border-radius: 8px;">
+            <p style="margin: 0 0 12px 0; color: #1e40af; font-weight: 600;">📺 Video Player</p>
+            <a href="https://gizasystems-my.sharepoint.com/:v:/p/mohamed_omara/IQC6CYG8i5cTRbpJi4OH5mFmAUj0xw2cXEP1Rb1fWuTQPEc?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=mldGOJ" 
+               target="_blank" 
+               style="display: inline-block; padding: 12px 24px; background-color: #3b82f6; color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">
+                ▶️ Click to Watch Video on OneDrive
+            </a>
+            <p style="margin-top: 12px; margin-bottom: 0; font-size: 14px; color: #64748b;">
+                (Opens in a new window)
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="security">
+    <h2>Login & Security Management</h2>
+
+    <h3>Regular Login</h3>
+    <ul>
+        <li>Access the portal using your registered username and password.</li>
+        <li>Ensure you're using the correct credentials associated with your activated account.</li>
+    </ul>
+
+    <h3>Forgot Password</h3>
+    <ul>
+        <li>Click the "Forgot Password" link on the login page.</li>
+        <li>Enter your registered email address.</li>
+        <li>An OTP (One-Time Password) will be sent to your email address.</li>
+        <li>Enter the OTP you received in your email.</li>
+        <li>If the OTP is correct, you will be prompted to enter a new password.</li>
+        <li>Create a new secure password following the system requirements.</li>
+    </ul>
+
+    <h3>Change Password</h3>
+    <ul>
+        <li>After logging in, navigate to your profile settings.</li>
+        <li>Select "Change Password" option.</li>
+        <li>Enter your current password and your new password.</li>
+        <li>Confirm the change to update your password.</li>
+    </ul>
+
+    <div class="video-box">
+        📹 <strong>Password Reset and Change Process Video</strong>
+        <p style="margin-top: 12px; font-size: 14px;">Step-by-step guide for managing your password</p>
+        
+        <div style="margin-top: 16px; text-align: center; padding: 20px; background-color: #f0f9ff; border-radius: 8px;">
+            <p style="margin: 0 0 12px 0; color: #1e40af; font-weight: 600;">📺 Video Player</p>
+            <a href="https://gizasystems-my.sharepoint.com/:v:/p/mohamed_omara/IQC6CYG8i5cTRbpJi4OH5mFmAUj0xw2cXEP1Rb1fWuTQPEc?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=mldGOJ" 
+               target="_blank" 
+               style="display: inline-block; padding: 12px 24px; background-color: #3b82f6; color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">
+                ▶️ Click to Watch Video on OneDrive
+            </a>
+            <p style="margin-top: 12px; margin-bottom: 0; font-size: 14px; color: #64748b;">
+                (Opens in a new window)
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="navigation">
+    <h2>Portal Navigation</h2>
+    <ul>
+        <li>Home screen overview and key information.</li>
+        <li>Side menu navigation for accessing all features.</li>
+        <li>Accessing core features from the side menu (Auctions, Employees, Vehicles, etc.).</li>
+        <li>Understanding the layout and structure of the portal.</li>
+    </ul>
+
+    <div class="video-box">
+        📹 <strong>Portal Navigation Walkthrough Video</strong>
+        <p style="margin-top: 12px; font-size: 14px;">Learn how to navigate through the portal efficiently</p>
+        
+        <div style="margin-top: 16px; text-align: center; padding: 20px; background-color: #f0f9ff; border-radius: 8px;">
+            <p style="margin: 0 0 12px 0; color: #1e40af; font-weight: 600;">📺 Video Player</p>
+            <a href="https://gizasystems-my.sharepoint.com/:v:/p/mohamed_omara/IQC6CYG8i5cTRbpJi4OH5mFmAUj0xw2cXEP1Rb1fWuTQPEc?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=mldGOJ" 
+               target="_blank" 
+               style="display: inline-block; padding: 12px 24px; background-color: #3b82f6; color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">
+                ▶️ Click to Watch Video on OneDrive
+            </a>
+            <p style="margin-top: 12px; margin-bottom: 0; font-size: 14px; color: #64748b;">
+                (Opens in a new window)
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="profile">
+    <h2>My Profile & Company Information</h2>
+
+    <h3>Supplier Information</h3>
+    <ul>
+        <li>View and manage personal and company details.</li>
+        <li>Access contracts information.</li>
+        <li>Review lands information.</li>
+        <li>Update contact information when needed.</li>
+    </ul>
+
+    <h3>Uploaded Documents</h3>
+    <ul>
+        <li>Delegation letters</li>
+        <li>Commercial register</li>
+        <li>Tax registration number</li>
+        <li>Paper contracts</li>
+        <li>View and download supported files.</li>
+        <li>Upload new documents when required.</li>
+    </ul>
+
+    <div class="video-box">
+        📹 <strong>Viewing Supplier Profile and Documents Video</strong>
+        <p style="margin-top: 12px; font-size: 14px;">Learn how to access and manage your profile information</p>
+        
+        <div style="margin-top: 16px; text-align: center; padding: 20px; background-color: #f0f9ff; border-radius: 8px;">
+            <p style="margin: 0 0 12px 0; color: #1e40af; font-weight: 600;">📺 Video Player</p>
+            <a href="https://gizasystems-my.sharepoint.com/:v:/p/mohamed_omara/IQC6CYG8i5cTRbpJi4OH5mFmAUj0xw2cXEP1Rb1fWuTQPEc?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=mldGOJ" 
+               target="_blank" 
+               style="display: inline-block; padding: 12px 24px; background-color: #3b82f6; color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">
+                ▶️ Click to Watch Video on OneDrive
+            </a>
+            <p style="margin-top: 12px; margin-bottom: 0; font-size: 14px; color: #64748b;">
+                (Opens in a new window)
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="finance">
+    <h2>Payments & Invoices</h2>
+    <ul>
+        <li>View complete payment history.</li>
+        <li>Access all issued invoices.</li>
+        <li>Download financial documents and receipts.</li>
+        <li>Track payment status and details.</li>
+    </ul>
+
+    <div class="video-box">
+        📹 <strong>Payments and Invoices Walkthrough Video</strong>
+        <p style="margin-top: 12px; font-size: 14px;">Learn how to access and manage your financial information</p>
+        
+        <div style="margin-top: 16px; text-align: center; padding: 20px; background-color: #f0f9ff; border-radius: 8px;">
+            <p style="margin: 0 0 12px 0; color: #1e40af; font-weight: 600;">📺 Video Player</p>
+            <a href="https://gizasystems-my.sharepoint.com/:v:/p/mohamed_omara/IQC6CYG8i5cTRbpJi4OH5mFmAUj0xw2cXEP1Rb1fWuTQPEc?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=mldGOJ" 
+               target="_blank" 
+               style="display: inline-block; padding: 12px 24px; background-color: #3b82f6; color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">
+                ▶️ Click to Watch Video on OneDrive
+            </a>
+            <p style="margin-top: 12px; margin-bottom: 0; font-size: 14px; color: #64748b;">
+                (Opens in a new window)
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="vehicles">
+    <h2>Vehicles Management</h2>
+    <ul>
+        <li>View all registered vehicles.</li>
+        <li>Add new vehicles to your account.</li>
+        <li>Edit vehicle details and information.</li>
+        <li>Search and filter vehicle records.</li>
+        <li>Manage vehicle documentation.</li>
+    </ul>
+
+    <div class="video-box">
+        📹 <strong>Creating and Managing Vehicles Video</strong>
+        <p style="margin-top: 12px; font-size: 14px;">Step-by-step guide for vehicle management</p>
+        
+        <div style="margin-top: 16px; text-align: center; padding: 20px; background-color: #f0f9ff; border-radius: 8px;">
+            <p style="margin: 0 0 12px 0; color: #1e40af; font-weight: 600;">📺 Video Player</p>
+            <a href="https://gizasystems-my.sharepoint.com/:v:/p/mohamed_omara/IQC6CYG8i5cTRbpJi4OH5mFmAUj0xw2cXEP1Rb1fWuTQPEc?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=mldGOJ" 
+               target="_blank" 
+               style="display: inline-block; padding: 12px 24px; background-color: #3b82f6; color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">
+                ▶️ Click to Watch Video on OneDrive
+            </a>
+            <p style="margin-top: 12px; margin-bottom: 0; font-size: 14px; color: #64748b;">
+                (Opens in a new window)
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="employees">
+    <h2>Employees Management</h2>
+    <ul>
+        <li>View complete employees list.</li>
+        <li>Add new employees to your account.</li>
+        <li>Manage employee details and information.</li>
+        <li>Update employee records as needed.</li>
+    </ul>
+
+    <div class="video-box">
+        📹 <strong>Creating and Managing Employees Video</strong>
+        <p style="margin-top: 12px; font-size: 14px;">Learn how to manage your employee records</p>
+        
+        <div style="margin-top: 16px; text-align: center; padding: 20px; background-color: #f0f9ff; border-radius: 8px;">
+            <p style="margin: 0 0 12px 0; color: #1e40af; font-weight: 600;">📺 Video Player</p>
+            <a href="https://gizasystems-my.sharepoint.com/:v:/p/mohamed_omara/IQC6CYG8i5cTRbpJi4OH5mFmAUj0xw2cXEP1Rb1fWuTQPEc?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=mldGOJ" 
+               target="_blank" 
+               style="display: inline-block; padding: 12px 24px; background-color: #3b82f6; color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">
+                ▶️ Click to Watch Video on OneDrive
+            </a>
+            <p style="margin-top: 12px; margin-bottom: 0; font-size: 14px; color: #64748b;">
+                (Opens in a new window)
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="auctions">
+    <h2>Offline Auctions</h2>
+    <ul>
+        <li>View all available offline auctions.</li>
+        <li>Subscribe to auctions of interest.</li>
+        <li>Track subscription status and updates.</li>
+        <li>Manage your auction participations.</li>
+    </ul>
+
+    <div class="video-box">
+        📹 <strong>Offline Auction Subscription Flow Video</strong>
+        <p style="margin-top: 12px; font-size: 14px;">Learn how to subscribe and participate in offline auctions</p>
+        
+        <div style="margin-top: 16px; text-align: center; padding: 20px; background-color: #f0f9ff; border-radius: 8px;">
+            <p style="margin: 0 0 12px 0; color: #1e40af; font-weight: 600;">📺 Video Player</p>
+            <a href="https://gizasystems-my.sharepoint.com/:v:/p/mohamed_omara/IQC6CYG8i5cTRbpJi4OH5mFmAUj0xw2cXEP1Rb1fWuTQPEc?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=mldGOJ" 
+               target="_blank" 
+               style="display: inline-block; padding: 12px 24px; background-color: #3b82f6; color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">
+                ▶️ Click to Watch Video on OneDrive
+            </a>
+            <p style="margin-top: 12px; margin-bottom: 0; font-size: 14px; color: #64748b;">
+                (Opens in a new window)
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="documents">
+    <h2>Documents & User Guides</h2>
+    <p>Download or view the following user guides and reference documents:</p>
+
+    <div style="display: flex; flex-direction: column; gap: 20px; margin-top: 24px;">
+        
+        <!-- Document 1: Supplier User Guide -->
+        <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border: 2px solid #0ea5e9; border-radius: 8px; padding: 24px;">
+            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                <span style="font-size: 32px; margin-right: 16px;">📄</span>
+                <div style="flex: 1;">
+                    <h3 style="margin: 0; color: #0c4a6e; font-size: 20px;">Supplier User Guide</h3>
+                    <p style="margin: 4px 0 0 0; color: #64748b; font-size: 14px;">Complete guide for suppliers using the portal</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 12px; margin-top: 16px;">
+                <a href="https://gizasystems-my.sharepoint.com/:b:/p/mohamed_omara/IQBM0MMaJOfzTY-BjK0vn_IkAbd1M1aBYuOX79syZp73SUo?e=7CJHvk" 
+                   target="_blank"
+                   style="flex: 1; display: inline-block; padding: 12px 20px; background-color: #0ea5e9; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; text-align: center; transition: background-color 0.3s;"
+                   onmouseover="this.style.backgroundColor='#0284c7'" 
+                   onmouseout="this.style.backgroundColor='#0ea5e9'">
+                    👁️ View PDF
+                </a>
+                <a href="https://gizasystems-my.sharepoint.com/:b:/p/mohamed_omara/IQBM0MMaJOfzTY-BjK0vn_IkAbd1M1aBYuOX79syZp73SUo?e=7CJHvk&download=1" 
+                   target="_blank"
+                   style="flex: 1; display: inline-block; padding: 12px 20px; background-color: #3b82f6; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; text-align: center; transition: background-color 0.3s;"
+                   onmouseover="this.style.backgroundColor='#2563eb'" 
+                   onmouseout="this.style.backgroundColor='#3b82f6'">
+                    ⬇️ Download PDF
+                </a>
+            </div>
+        </div>
+
+        <!-- Document 2: Supplier Activation User Guide -->
+        <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border: 2px solid #f59e0b; border-radius: 8px; padding: 24px;">
+            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                <span style="font-size: 32px; margin-right: 16px;">📋</span>
+                <div style="flex: 1;">
+                    <h3 style="margin: 0; color: #92400e; font-size: 20px;">Supplier Activation User Guide</h3>
+                    <p style="margin: 4px 0 0 0; color: #64748b; font-size: 14px;">Step-by-step guide for account activation process</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 12px; margin-top: 16px;">
+                <a href="https://gizasystems-my.sharepoint.com/:b:/p/mohamed_omara/IQAo3djxyTPvSqcfWMDjklEVAb3ABRo8xOevQH-FThFNVBU?e=3arhFV" 
+                   target="_blank"
+                   style="flex: 1; display: inline-block; padding: 12px 20px; background-color: #f59e0b; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; text-align: center; transition: background-color 0.3s;"
+                   onmouseover="this.style.backgroundColor='#d97706'" 
+                   onmouseout="this.style.backgroundColor='#f59e0b'">
+                    👁️ View PDF
+                </a>
+                <a href="https://gizasystems-my.sharepoint.com/:b:/p/mohamed_omara/IQAo3djxyTPvSqcfWMDjklEVAb3ABRo8xOevQH-FThFNVBU?e=3arhFV&download=1" 
+                   target="_blank"
+                   style="flex: 1; display: inline-block; padding: 12px 20px; background-color: #3b82f6; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; text-align: center; transition: background-color 0.3s;"
+                   onmouseover="this.style.backgroundColor='#2563eb'" 
+                   onmouseout="this.style.backgroundColor='#3b82f6'">
+                    ⬇️ Download PDF
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+</div>
+
+<footer>
+    Mohamed Omara - Scrap Project © 2026 – Supplier Portal User Guide<br>
+    For support, please contact your system administrator
+</footer>
+
+<script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
